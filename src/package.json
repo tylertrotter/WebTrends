@@ -1,0 +1,19 @@
+{
+  "name": "webtrendss ",
+  "version": "1.0.0",
+  "description": "Identify skills trending in web dev.",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.5.5"
+  },
+  "devDependencies": {
+    "angular": "^1.5.5",
+    "angular-xml": "^2.2.1",
+    "x2js": "^2.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyler Trotter",
+  "license": "ISC"
+}

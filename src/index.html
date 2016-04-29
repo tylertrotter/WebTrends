@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-us" ng-app="WebTrends">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>WebTrends</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="node_modules/angular/angular.js"></script>
+    </head>
+    <body>
+        
+        <div ng-controller="ConvertXml">
+            <div ng-repeat="posting in postings">
+                <h1>{{ posting.author.name.__text }}</h1>
+                <ul>
+                    <li ng-repeat="skill in posting.category">{{skill}}</li>
+                </ul>
+            </div>
+        </div>
+       
+        <!-- Modules -->
+        <script src="js/app.js"></script>
+        <script src="node_modules/x2js/x2js.js"></script>
+        <script src="node_modules/angular-xml/angular-xml.js"></script>
+
+        <!-- Controllers -->
+        <script src="js/controllers/convertxml.js"></script>
+
+        <!-- Services -->
+        <script src="js/services/getdata.js"></script>
+
+        <!-- Directives -->
+    </body>
+</html>
