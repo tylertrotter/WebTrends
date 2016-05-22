@@ -1,0 +1,19 @@
+@import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+.skills-list{
+  padding: 0;
+  > li{
+    display: flex;
+    align-items: center;
+    margin-bottom: $padding-small-vertical;
+  }
+  p{
+    margin: 0;
+    span{ font-weight: bold; }
+  }
+}
+.percentage-bar{
+  background: $brand-primary;
+  height: 1.5em;
+  margin-right: 1em;
+}
