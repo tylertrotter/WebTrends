@@ -25,6 +25,7 @@ module.exports = function(grunt) {
         files: [
           // includes files within path
           {expand: true, src: ['index.html'], dest: '../dist/', filter: 'isFile'},
+          {expand: true, src: ['node_modules/pikaday/pikaday.js'], dest: '../dist/', filter: 'isFile'},
           {expand: true, src: ['js/webtrends.js'], dest: '../dist/', filter: 'isFile'}
           //
           // // includes files within path and its sub-directories

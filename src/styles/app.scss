@@ -1,6 +1,28 @@
 @import "../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../node_modules/pikaday/scss/pikaday.scss";
+$active-color: #FFF9D7;
 
-.skills-list{
+.page-header{
+  padding: $padding-large-horizontal;
+}
+#controls{
+  background: $gray-lighter;
+  position: fixed;
+  width: 275px;
+  top: 0;
+  right: 0;
+  height: 100%;
+  padding: $padding-large-horizontal;
+  > *{ margin-bottom: $padding-large-vertical; }
+}
+.btn.active{
+  background: $active-color;
+}
+.btn-secondary{
+  background: white;
+  border-color: #aaa;
+}
+#data ol{
   padding: 0;
   > li{
     display: flex;

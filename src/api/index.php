@@ -15,8 +15,11 @@
       die;
     }
 
+    $today = getdate();
+    $todayFormatted = $today['year'] . '-' . str_pad($today['mon'], 2, '0', STR_PAD_LEFT) . '-' . $today['mday'];
+
     $start = isset($_GET['start']) ? $_GET['start'] : '2016-04-01';
-    $end = isset($_GET['end']) ? $_GET['end'] : '2016-05-15';
+    $end = isset($_GET['end']) ? $_GET['end'] : $todayFormatted;
 
     $startQ = " AND date >= '" . $start . "'";
     $endQ = " AND date <= '" . $end . "'";

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Identify skills trending in web dev.",
   "main": "index.html",
-  "dependencies": {},
+  "dependencies": {
+    "pikaday": "^1.4.0"
+  },
   "devDependencies": {
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
