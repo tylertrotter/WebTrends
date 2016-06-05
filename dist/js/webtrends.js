@@ -1,4 +1,4 @@
-(function(){
+//(function(){
   var webTrends = {
     requestJSON: function(endpoint, callback){
       var request = new XMLHttpRequest();
@@ -53,18 +53,31 @@
       document.getElementById('data').appendChild(newList);
     },
     changeData: function(job, region, start, end, city){
+      var startEnd;
       document.getElementById('data').innerHTML = '';
       document.getElementById('job-heading').innerHTML = job;
       document.getElementById('query-parameters-heading').innerHTML = `In ${region} during ${start} to ${end}`;
-      this.requestJSON(`http://localhost:8888/src/api/?field=${job}&region=${region}&start=${start}&end=${end}`, webTrends.displaySkills);
+      if(region.length){
+        region = `&region=${region}`;
+      }else{
+        region = '';
+      }
+      if(start.length && end.length){
+        startEnd = `&start=${start}&end=${end}`;
+      }else{
+        startEnd = '';
+      }
+      this.requestJSON(`http://localhost:8888/src/api/?field=${job}${region}${startEnd}`, webTrends.displaySkills);
     },
     getTotalNum: function(){
       var data = webTrends.json.total;
       var total = 0;
       for(var i = 0; i < data.length; i++){
         total += +data[i][Object.keys(data[i])[0]];
+        console.log(data);
       }
       webTrends.total = total;
+      document.getElementById('total').innerHTML = webTrends.total;
     },
     utilityFunctions:{
       getPercentage: function(percentage){
@@ -86,7 +99,11 @@
     },
     query: {
       region: '',
-      date: {}
+      job: 'frontend',
+      date: {
+        start: '',
+        end: ''
+      }
     }
   };
 
@@ -117,11 +134,12 @@
     field: document.getElementById('date-end'),
     onSelect: function(){
       webTrends.query.date.end = webTrends.utilityFunctions.formatDate(this._d);
-    }
+    },
+    defaultDate: 'today'
   });
 
   document.getElementById('get-results').addEventListener('click', function(){
     webTrends.changeData(webTrends.query.job, webTrends.query.region, webTrends.query.date.start, webTrends.query.date.end);
   });
 
-})();
+//})();

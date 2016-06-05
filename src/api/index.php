@@ -24,9 +24,10 @@
     $startQ = " AND date >= '" . $start . "'";
     $endQ = " AND date <= '" . $end . "'";
     $fieldQ = "field = '" . $field  . "'";
-    $regionQ = isset($_GET['region']) ? " AND region ~* '" . $_GET['region'] . "'" : " ";
+    $regionQ = isset($_GET['region']) ? getRegion($_GET['region']) : " ";
     $cityQ = isset($_GET['city']) ? " AND city ~* '" . $_GET['city'] . "'" : " ";
     $query = "SELECT * FROM skill WHERE " . $fieldQ . $startQ . $endQ . $regionQ . $cityQ;
+
     $result = pg_query($db, $query);
 
     $months = getMonths($start, $end);
@@ -71,6 +72,19 @@
         $i++;
     }
     echo ']}';
+
+    function getRegion($region){
+      $regionArray = explode(',', $region);
+      $regionQuery = ' AND (';
+      for ($i = 0; $i < count($regionArray); $i++) {
+          if( $i != 0 ){
+            $regionQuery .= ' OR ';
+          }
+          $regionQuery .= "region = '" . $regionArray[$i] . "'";
+      }
+      $regionQuery .= ')';
+      return $regionQuery;
+    }
 
     function getMonths($start, $end){
         $monthsInRange = getMonthsInRange($start, $end);
